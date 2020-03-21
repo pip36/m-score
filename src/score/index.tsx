@@ -1,15 +1,23 @@
 import { SVG } from "@svgdotjs/svg.js";
+import { drawStave } from "./stave";
+import { drawTrebleClef } from "./clefs/trebleClef";
+
+const viewWidth = 500;
+const viewHeight = 500;
 
 const Draw = () => {
   const draw = SVG()
     .addTo("#score")
-    .size(300, 300);
+    .viewbox(0, 0, viewWidth, viewHeight);
 
-  draw.rect(300, 1).attr({ x: 0, y: 0 });
-  draw.rect(300, 1).attr({ x: 0, y: 10 });
-  draw.rect(300, 1).attr({ x: 0, y: 20 });
-  draw.rect(300, 1).attr({ x: 0, y: 30 });
-  draw.rect(300, 1).attr({ x: 0, y: 40 });
+  const svgContext = {
+    width: viewWidth,
+    height: viewHeight,
+    draw
+  };
+
+  drawStave(svgContext);
+  drawTrebleClef(svgContext);
 };
 
 export default Draw;
