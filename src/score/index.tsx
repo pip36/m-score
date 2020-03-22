@@ -3,6 +3,7 @@ import { drawStave } from "./stave";
 import { drawTrebleClef } from "./clefs/trebleClef";
 import { drawNoteHead, NoteHeadTypes } from "./notes/noteHead";
 import { drawNoteStem, StemDirections } from "./notes/noteStem";
+import { drawTimeSignatureNumber } from "./timeSignatures/timeSignatureNumber";
 
 const viewWidth = 500;
 const viewHeight = 500;
@@ -20,6 +21,10 @@ const Draw = () => {
 
   drawStave(svgContext);
   drawTrebleClef(svgContext);
+
+  drawTimeSignatureNumber(svgContext, { x: 42, y: 51, value: 4 });
+  drawTimeSignatureNumber(svgContext, { x: 42, y: 71, value: 4 });
+
   drawNoteHead(svgContext, { x: 60, y: 60, type: NoteHeadTypes.Crotchet });
   drawNoteStem(svgContext, { x: 60.6, y: 65, direction: StemDirections.Down });
 
